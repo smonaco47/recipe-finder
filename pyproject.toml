@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "recipe-finder"
+version = "0.1.0"
+description = "Tool to find recipes given ingredients"
+authors = ["smonaco47 <sarah.tech47@gmail.com>"]
+license = "GNU"
+readme = "README.md"
+packages = [{include = "recipe_finder"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+pyspark = "^3.3.0"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^5.0.4"
+pre-commit = "^2.20.0"
+black = "^22.8.0"
+mypy = "^0.971"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
