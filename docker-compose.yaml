@@ -1,29 +1,29 @@
 version: "3.3"
 services:
-  notebook:
-    build: .
-    ports:
-      - "8888:8888"
-    volumes: 
-      - ./:/src
-    command: 'poetry run jupyter lab --allow-root --ip 0.0.0.0 --no-browser'
-    
   flask:
-    build: .
+    build: ./api
+    image: recipe-api
     ports:
       - "5000:5000"
     environment:
       - FLASK_APP=/src/src/api.py
     volumes: 
-      - ./:/src
+      - ./api:/src
     command: 'poetry run flask run --host=0.0.0.0'
+    
+  # notebook:
+  #   image: recipe-api
+  #   ports:
+  #     - "8888:8888"
+  #   volumes: 
+  #     - ./:/src
+  #   command: 'poetry run jupyter lab --allow-root --ip 0.0.0.0 --no-browser'
     
   web:
     build: ./web
+    image: recipe-web
     ports:
       - "3000:3000"
     volumes: 
       - ./web:/src
     command: 'npm start'
-      
-      

@@ -1,0 +1,4 @@
+kmeans-images/*
+tmp-ignore/*
+*/node_modules/*
+
