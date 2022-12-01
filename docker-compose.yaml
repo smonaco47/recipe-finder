@@ -11,13 +11,14 @@ services:
       - ./api:/src
     command: 'poetry run flask run --host=0.0.0.0'
     
-  # notebook:
-  #   image: recipe-api
-  #   ports:
-  #     - "8888:8888"
-  #   volumes: 
-  #     - ./:/src
-  #   command: 'poetry run jupyter lab --allow-root --ip 0.0.0.0 --no-browser'
+  notebook:
+    build: ./preprocessing
+    image: recipe-api-preprocessing
+    ports:
+      - "8888:8888"
+    volumes: 
+      - ./preprocessing:/src
+    command: 'poetry run jupyter lab --allow-root --ip 0.0.0.0 --no-browser'
     
   web:
     build: ./web

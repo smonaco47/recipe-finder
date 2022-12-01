@@ -61,7 +61,7 @@ def recipes():
     label = int(request.args.get('label', ''))
     limit = int(request.args.get('limit', 10))
 
-    #     TODO How best to cache? should we do a sqlite db?
+    # TODO How best to cache? should we do a sqlite db?
 
     path = MODELS[VERSION]["recipes"]
     result_df = pd.read_pickle(path)

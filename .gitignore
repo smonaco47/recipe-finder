@@ -128,4 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-/data/
+data/
+/kmeans-images/
+/models/
+/tmp/
+*.pkl
