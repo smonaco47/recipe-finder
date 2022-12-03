@@ -2,9 +2,5 @@
 FROM node:19-slim
 
 WORKDIR /app
-
 COPY . .
-
-WORKDIR /app/recipe-app
-
-RUN npm install
+RUN npm install && cp -r /app/node_modules /tmp/node_modules
