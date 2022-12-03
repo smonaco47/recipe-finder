@@ -9,7 +9,7 @@ FROM python:3.9-slim
 # ENV SPARK_OPTS="--driver-java-options=-Xms1024M --driver-java-options=-Xmx4096M --driver-java-options=-Dlog4j.logLevel=info" \
 #     PATH="${PATH}:${SPARK_HOME}/bin"
 
-WORKDIR /src
+WORKDIR /app
 
 RUN pip install poetry
 

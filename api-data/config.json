@@ -1,0 +1,12 @@
+[
+    {
+        "key": "model_2",
+        "model": "trained_kmeans_2_20221023-221709.pkl",
+        "recipes": "labeled_recipes_df_2.pkl"
+    },
+    {
+        "key": "model_20",
+        "model": "trained_kmeans_20_20221023-222054.pkl",
+        "recipes": "labeled_recipes_df_20.pkl"
+    }
+]

@@ -1,0 +1,25 @@
+version: "3.3"
+services:
+  flask:
+    build: ./api
+    image: recipe-api
+    volumes: 
+      - ./api:/app
+    command: 'sh lint.sh'
+    
+  preprocessing:
+    build: ./preprocessing
+    image: recipe-api-preprocessing
+    volumes: 
+      - ./preprocessing:/app
+    command: 'sh lint.sh'
+    
+#   web:
+#     build: ./web
+#     image: recipe-web
+#     ports:
+#       - "3000:3000"
+#     volumes: 
+#       - ./web:/app
+#     command: 'npx eslint . --ext .js'
+# '
