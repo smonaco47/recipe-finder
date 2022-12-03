@@ -1,10 +1,42 @@
 version: "3.3"
 services:
-  notebook:
-    build: .
+  flask:
+    build: ./api
+    image: recipe-api
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=/app/src/api.py
+      - DATA_CONFIG_FILE=config.json
+      - DATA_ROOT_FOLDER=/data
+      - MODEL_KEY=model_2
+    volumes: 
+      - ./api:/app
+      - ./api-data:/data
+    command: 'poetry run flask run --host=0.0.0.0'
+    
+  preprocessing:
+    build: ./preprocessing
+    image: recipe-api-preprocessing
     ports:
       - "8888:8888"
     volumes: 
-      - ./:/src
+      - ./preprocessing:/app
+      - ./data:/data
+      - ./tmp:/tmp
     command: 'poetry run jupyter lab --allow-root --ip 0.0.0.0 --no-browser'
     
+  web:
+    build: ./recipe-app
+    image: recipe-app
+    ports:
+      - "3000:3000"
+    volumes: 
+      - ./recipe-app:/app
+      - /app/node_modules/
+    command:       
+      - /bin/sh
+      - -c
+      - |
+        cp -r /tmp/node_modules /app/node_modules
+        npm start
